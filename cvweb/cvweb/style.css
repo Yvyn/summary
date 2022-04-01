@@ -1,0 +1,54 @@
+
+body{
+      padding: 100px 0;
+background-color: #303030;  
+
+}
+.continer
+{
+      padding: 10px 10px;
+      width: 800px;
+      border: 10px solid #202020 ;
+      margin: 0 auto;
+      background-color: seashell;
+      
+      border-radius: 25px;
+      
+}
+
+.content{
+      padding: 10px 30px;
+      width:  400px; 
+      min-height: 1px;
+      border: 5px solid #3f3f3f ;
+      justify-content: center;
+      align-items: center;
+      border-radius: 25px;
+      background-color: rgb(245, 235, 228);
+   
+}
+.content_left{
+      padding: 10px 30px;
+      width:  200px; 
+      min-height: 1px;
+      border: 5px solid #3f3f3f ;
+      justify-content: center;
+      align-items: center;
+      border-radius: 25px;
+      background-color: rgb(245, 235, 228);
+      
+}
+
+
+div{
+      margin: 7%;
+  }
+
+  a { 
+      text-decoration: none; /* Отменяем подчеркивание у ссылки */
+      color: black;
+     } 
+
+     li {
+      line-height: 1.4;
+  }
