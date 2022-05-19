@@ -11,7 +11,6 @@ background-color: #303030;
       border: 10px solid #202020 ;
       margin: 0 auto;
       background-color: seashell;
-      
       border-radius: 25px;
       
 }
@@ -39,7 +38,9 @@ background-color: #303030;
       
 }
 
-
+.language{
+      text-align: right;
+}
 div{
       margin: 7%;
   }
