@@ -29,6 +29,11 @@ a {
  li {
       line-height: 1.4;
   }
+  ul, li {
+      padding-left: 5px;
+      margin: 5px;
+      
+    }
 
 
 
@@ -72,5 +77,3 @@ a {
       border-radius: 25px;
       background-color: rgb(245, 235, 228);
 }
-
-
