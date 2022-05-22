@@ -17,6 +17,7 @@ body{
 a { 
       text-decoration: none; /* Отменяем подчеркивание у ссылки */
       color: rgb(0, 0, 0);
+     
      } 
 
 .language{
@@ -57,6 +58,8 @@ a {
       border: 5px solid #3f3f3f ;
       border-radius: 25px;
       background-color: rgb(245, 235, 228);
+  
+  
 }
 .child_left_img{
 
@@ -76,4 +79,5 @@ a {
       border: 5px solid #3f3f3f ;
       border-radius: 25px;
       background-color: rgb(245, 235, 228);
+      
 }
