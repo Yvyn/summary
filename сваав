@@ -1,0 +1,19 @@
+clientOrders": {
+        "data": [
+          {
+            "id": 0,
+            "title": "string",
+            "userId": 0,
+            "responsibleId": 0,
+            "containerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "stageId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "creationDate": "2024-02-02T10:57:25.412Z",
+            "canceled": true,
+            "archived": true,
+            "deleted": true,
+            "orderData": [
+            "tagIds": [
+            "orderActions": [
+
+
+}
