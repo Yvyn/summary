@@ -405,6 +405,10 @@ strong { font-weight: 500; }
   :root { --gutter: 16px; }
   body { font-size: 16px; }
 
+  /* Same two-row header in every language, so it does not jump when switching */
+  .site-header .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 16px; }
+  .site-nav { grid-column: 1 / -1; grid-row: 2; }
+
   .section { margin-top: 64px; }
   .site-footer { margin-top: 64px; }
   .page-head { padding-top: 40px; }
