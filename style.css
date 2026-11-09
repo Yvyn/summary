@@ -12,7 +12,7 @@
   --sans: "Geologica", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
   --cv-font: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --cv-paper: #fffbef;
+  --cv-paper: #faf8f3;
   --page: 1080px;
   --gutter: 32px;
 }
@@ -152,8 +152,10 @@ strong { font-weight: 500; }
 .hero-contacts a { text-decoration: none; overflow-wrap: anywhere; }
 .hero-contacts a:hover { text-decoration: underline; }
 
-.portrait { order: -1; margin: 0; align-self: center; aspect-ratio: 1; border-radius: 50%; overflow: hidden; }
-.portrait img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.portrait { order: -1; margin: 0; align-self: center; aspect-ratio: 1; border-radius: 50%; overflow: hidden; transform: scaleX(-1);
+  /* The photo is shifted to centre the person; this stretches its wall edge to fill the gap */
+  background: url("img/portrait.jpg") 100% 3.4% / 2000% 145.9% no-repeat; }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 3%; transform: translateX(-14%) scale(1.1); transform-origin: 0 5%; }
 
 /* ---------- Home: additional information ---------- */
 .info { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; }
@@ -314,8 +316,12 @@ strong { font-weight: 500; }
   height: 170px;
   border-radius: 50%;
   overflow: hidden;
+  transform: scaleX(-1);
+  background: url("img/portrait.jpg") 100% 3.4% / 2000% 145.9% no-repeat;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
-.cv-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cv-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 3%; transform: translateX(-14%) scale(1.1); transform-origin: 0 5%; }
 .cv-head h1 { font-size: 34px; }
 .cv-role { margin: 4px 0 12px; font-size: 18px; color: var(--accent); }
 
@@ -375,7 +381,7 @@ strong { font-weight: 500; }
 
 /* First screen appears in sequence */
 @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-@keyframes portrait-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes portrait-in { from { opacity: 0; transform: scaleX(-1) scale(0.96); } to { opacity: 1; transform: scaleX(-1); } }
 
 .hero h1, .hero-role, .hero-contacts, .hero .actions { animation: rise 0.6s ease both; }
 .hero-role { animation-delay: 0.1s; }
