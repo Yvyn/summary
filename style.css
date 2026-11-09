@@ -11,6 +11,8 @@
   --on-mark: #16181b;
   --sans: "Geologica", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --cv-font: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --cv-paper: #fffbef;
   --page: 1080px;
   --gutter: 32px;
 }
@@ -150,10 +152,8 @@ strong { font-weight: 500; }
 .hero-contacts a { text-decoration: none; overflow-wrap: anywhere; }
 .hero-contacts a:hover { text-decoration: underline; }
 
-.portrait { order: -1; margin: 0; align-self: center; aspect-ratio: 1; border-radius: 50%; overflow: hidden; transform: scaleX(-1);
-  /* The photo is shifted to centre the person; this stretches its wall edge to fill the gap */
-  background: url("img/portrait.jpg") 100% 3.4% / 2000% 145.9% no-repeat; }
-.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 3%; transform: translateX(-14%) scale(1.1); transform-origin: 0 5%; }
+.portrait { order: -1; margin: 0; align-self: center; aspect-ratio: 1; border-radius: 50%; overflow: hidden; }
+.portrait img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* ---------- Home: additional information ---------- */
 .info { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; }
@@ -287,10 +287,18 @@ strong { font-weight: 500; }
   padding: var(--page-pad);
   border: 1px solid var(--line);
   border-radius: 4px;
-  background: var(--surface);
+  background: var(--cv-paper);
+  font-family: var(--cv-font);
+  font-weight: 400;
   font-size: 15px;
   line-height: 1.5;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
+.cv h1, .cv h2, .cv h3 { font-family: var(--cv-font); }
+.cv-head h1 { font-weight: 800; letter-spacing: -0.01em; }
+.cv-role { font-weight: 300; letter-spacing: 0.08em; }
+.cv strong { font-weight: 700; }
 
 .cv-head {
   display: grid;
@@ -306,14 +314,10 @@ strong { font-weight: 500; }
   height: 170px;
   border-radius: 50%;
   overflow: hidden;
-  transform: scaleX(-1);
-  background: url("img/portrait.jpg") 100% 3.4% / 2000% 145.9% no-repeat;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
 }
-.cv-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 3%; transform: translateX(-14%) scale(1.1); transform-origin: 0 5%; }
+.cv-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .cv-head h1 { font-size: 34px; }
-.cv-role { margin: 4px 0 12px; font-size: 18px; font-weight: 400; color: var(--accent); }
+.cv-role { margin: 4px 0 12px; font-size: 18px; color: var(--accent); }
 
 .cv-contacts { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; list-style: none; font-size: 14px; }
 .cv-contacts a { text-decoration: none; overflow-wrap: anywhere; }
@@ -322,17 +326,17 @@ strong { font-weight: 500; }
 
 .cv-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 256px;
-  gap: 44px;
+  grid-template-columns: minmax(0, 1fr) 276px;
+  gap: 24px;
   margin-top: 28px;
 }
 
 .cv h2 {
   margin: 28px 0 12px;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 12.5px;
-  font-weight: 500;
+  color: var(--ink);
+  font-family: var(--cv-font);
+  font-size: 14px;
+  font-weight: 700;
   letter-spacing: 0.06em;
   line-height: 1.4;
   text-transform: uppercase;
@@ -341,7 +345,7 @@ strong { font-weight: 500; }
 
 .job { break-inside: avoid; margin-bottom: 20px; }
 .job:last-child { margin-bottom: 0; }
-.job h3 { font-size: 16.5px; letter-spacing: -0.01em; font-weight: 500; }
+.job h3 { font-size: 16.5px; letter-spacing: -0.01em; font-weight: 700; }
 .job > p { margin: 3px 0 4px; color: var(--muted); }
 .job ul { margin: 0; padding-left: 1.1em; }
 .job li { margin-bottom: 2px; }
@@ -371,7 +375,7 @@ strong { font-weight: 500; }
 
 /* First screen appears in sequence */
 @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-@keyframes portrait-in { from { opacity: 0; transform: scaleX(-1) scale(0.96); } to { opacity: 1; transform: scaleX(-1); } }
+@keyframes portrait-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: none; } }
 
 .hero h1, .hero-role, .hero-contacts, .hero .actions { animation: rise 0.6s ease both; }
 .hero-role { animation-delay: 0.1s; }
@@ -441,11 +445,11 @@ strong { font-weight: 500; }
 }
 
 /* ---------- Print and PDF: one A4 sheet ---------- */
-@page { size: A4; margin: 7mm 10mm; }
+@page { size: A4; margin: 0; }
 
 @media print {
   :root {
-    --paper: #fff;
+    --paper: var(--cv-paper);
     --surface: #fff;
     --muted: #4f555c;
   }
@@ -455,7 +459,8 @@ strong { font-weight: 500; }
   .site-header, .site-footer, .cv-bar { display: none; }
   .wrap { width: auto; max-width: none; padding: 0; }
 
-  .cv { max-width: none; padding: 0; border: 0; border-radius: 0; font-size: 9pt; line-height: 1.3; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .cv { max-width: none; min-height: 297mm; padding: 7mm 10mm; border: 0; border-radius: 0; font-size: 9pt; line-height: 1.3; }
   .cv-head { grid-template-columns: 104px minmax(0, 1fr); gap: 16px; padding-bottom: 8px; }
   .cv-photo { width: 104px; height: 104px; }
   .cv-head h1 { font-size: 21pt; }
@@ -463,8 +468,8 @@ strong { font-weight: 500; }
   .cv-contacts { display: grid; grid-template-columns: repeat(2, max-content); gap: 1px 6mm; font-size: 9pt; }
   .cv-contacts li:last-child { grid-column: 1 / -1; }
 
-  .cv-body { grid-template-columns: minmax(0, 1fr) 64mm; gap: 6mm; margin-top: 8px; }
-  .cv h2 { margin: 8px 0 4px; font-size: 8pt; }
+  .cv-body { grid-template-columns: minmax(0, 1fr) 67mm; gap: 3mm; margin-top: 8px; }
+  .cv h2 { margin: 8px 0 4px; font-size: 9.5pt; }
   .job { margin-bottom: 5px; }
   .job h3 { font-size: 10.2pt; }
   .job > p { margin: 1px 0 2px; }
